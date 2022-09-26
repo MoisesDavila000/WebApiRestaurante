@@ -22,13 +22,27 @@ namespace WebApiRestaurante.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Acompañamiento>> GetById(int id)
+        public async Task<ActionResult<Acompañamiento>> GetById([FromHeader] int id)
         {
             return await dbContext.Acompañamientos.FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        [HttpGet("{nombre}")]
+        public async Task<ActionResult<Acompañamiento>> Get([FromRoute] string nombre)
+        {
+            var acompañamiento = await dbContext.Acompañamientos.FirstOrDefaultAsync(x => x.Nombre.Contains(nombre));
+
+            if (acompañamiento == null)
+            {
+                return NotFound();
+            }
+
+            return acompañamiento;
+
+        }
+
         [HttpPost]
-        public async Task<ActionResult> Post (Acompañamiento acompañamiento)
+        public async Task<ActionResult> Post ([FromBody] Acompañamiento acompañamiento)
         {
             var existePlatillo = await dbContext.Platillos.AnyAsync(x => x.Id == acompañamiento.PlatilloId);
 
