@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "c3cpz12aFy0VI6R1p4Bgw5OQCTrBM89Ely9V63ehGsY=",
+  "Hash": "BGb3i6XyFqM0QHnAGU3KbFanRmSrpc4YLZ4fQsCW5Qs=",
   "Source": "WebApiRestaurante",
   "BasePath": "_content/WebApiRestaurante",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebApiRestaurante\\wwwroot",
+      "Source": "WebApiRestaurante",
+      "ContentRoot": "D:\\VS repos\\WebApiRestaurante\\wwwroot\\",
+      "BasePath": "_content/WebApiRestaurante",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\VS repos\\WebApiRestaurante\\wwwroot\\Restaurante.txt",
+      "SourceId": "WebApiRestaurante",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\VS repos\\WebApiRestaurante\\wwwroot\\",
+      "BasePath": "_content/WebApiRestaurante",
+      "RelativePath": "Restaurante.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Restaurante.txt"
+    }
+  ]
 }

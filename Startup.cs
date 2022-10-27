@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
+using WebApiRestaurante.Filtros;
+using WebApiRestaurante.Middlewares;
+using WebApiRestaurante.Services;
 
 namespace WebApiRestaurante
 {
@@ -14,17 +17,24 @@ namespace WebApiRestaurante
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+            services.AddControllers(opciones =>
+            {
+                opciones.Filters.Add(typeof(FiltroDeExcepcion));
+            }).AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
- 
+
+            services.AddTransient<FiltroDeRegistro>();
+            services.AddHostedService<EscribirArchivo>();
+
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseResponseHttpMiddleware();
             // Configure the HTTP request pipeline.
             if (env.IsDevelopment())
             {
