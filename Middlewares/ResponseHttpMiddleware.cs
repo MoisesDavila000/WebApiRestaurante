@@ -1,4 +1,4 @@
-﻿namespace WebApiRestaurante.Middlewares
+﻿namespace WebApiRestaurante2.Middlewares
 {
     public static class MiddlewareExtensions
     {

@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
-using WebApiRestaurante.Filtros;
-using WebApiRestaurante.Middlewares;
-using WebApiRestaurante.Services;
+using WebApiRestaurante2.Filtros;
+using WebApiRestaurante2.Middlewares;
+using WebApiRestaurante2.Services;
 
-namespace WebApiRestaurante
+namespace WebApiRestaurante2
 {
     public class Startup
     {
@@ -27,9 +27,13 @@ namespace WebApiRestaurante
 
             services.AddTransient<FiltroDeRegistro>();
             services.AddHostedService<EscribirArchivo>();
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(
+                /*c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApiRestaurante", Version = "v1" });
+            }*/);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

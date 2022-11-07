@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApiRestaurante.Validaciones
+namespace WebApiRestaurante2.Validaciones
 {
     public class PrimeraLetraMayusculaAttribute : ValidationAttribute
     {

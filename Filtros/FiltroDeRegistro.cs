@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace WebApiRestaurante.Filtros
+namespace WebApiRestaurante2.Filtros
 {
     public class FiltroDeRegistro :IActionFilter
     {

@@ -1,89 +1,70 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApiRestaurante.Entidades;
-using WebApiRestaurante.Filtros;
-using WebApiRestaurante.Services;
+using WebApiRestaurante2.DTOs;
+using WebApiRestaurante2.Entidades;
+using WebApiRestaurante2.Filtros;
+using WebApiRestaurante2.Services;
 
-namespace WebApiRestaurante.Controllers
+namespace WebApiRestaurante2.Controllers
 {
     [ApiController]
-    [Route("api/platillos")]
+    [Route("Platillos")]
     public class PlatillosController: ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
         private readonly ILogger<PlatillosController> logger;
         private readonly IWebHostEnvironment env;
-        //private readonly EscribirArchivo escribir;
+        private readonly IMapper mapper;
 
-        public PlatillosController(ApplicationDbContext dbContext, ILogger<PlatillosController> logger, IWebHostEnvironment env)
+        public PlatillosController(ApplicationDbContext dbContext, ILogger<PlatillosController> logger, IWebHostEnvironment env, IMapper mapper)
         {
             
             this.dbContext = dbContext;
             this.logger = logger;
             this.env = env;
+            this.mapper = mapper;
             
         }
 
-
-        [HttpGet]
-        [HttpGet("listado")]
-        [HttpGet("/Menu")]
-        public async Task<ActionResult<List<Platillos>>> Get()
+        [HttpGet("/Menu_Platillos")]
+        public async Task<ActionResult<List<GETPlatilloDTO>>> Get()
         {
             EscribirArchivo escribir = new EscribirArchivo(env);
             escribir.PetGet();
             logger.LogInformation("Se obtiene el listado de los platillos.");
-            return await dbContext.Platillos.Include(x => x.Acompañamientos).ToListAsync();
-        }
-
-        [HttpGet("primero")]
-        public async Task<ActionResult<Platillos>> PrimerPlatillo()
-        {
-            EscribirArchivo escribir = new EscribirArchivo(env);
-            escribir.PetGet();
-            logger.LogInformation("Se obtiene el primer platillo.");
-            return await dbContext.Platillos.FirstOrDefaultAsync();
+            var platillos = await dbContext.Platillos.ToListAsync();
+            return mapper.Map<List<GETPlatilloDTO>>(platillos);
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Platillos>> Get([FromHeader] int id)
+        public async Task<ActionResult<PlatilloDTOConAcompañamiento>> GetById(int id)
         {
-            var platillo = await dbContext.Platillos.FirstOrDefaultAsync(x => x.Id == id);
+            var platillo = await dbContext.Platillos
+                .Include(platilloDB => platilloDB.PlatilloAcompañamientos)
+                .ThenInclude(platilloAcompañamientoDB => platilloAcompañamientoDB.Acompañamiento)
+                .FirstOrDefaultAsync(platilloBD => platilloBD.Id == id);
 
             if(platillo == null)
             {
                 logger.LogError("No se encuentra el platillo con dicho id.");
                 return NotFound();
             }
-            EscribirArchivo escribir = new EscribirArchivo(env);
-            escribir.PetGet();
 
-            return platillo;
-
-        }
-
-        [HttpGet("{id:int}/{tipo}")]
-        public async Task<ActionResult<Platillos>> Get([FromQuery] int id, [FromQuery] string tipo)
-        {
-            var platillo = await dbContext.Platillos.FirstOrDefaultAsync(x => x.Id == id && x.Tipo == tipo);
-
-            if (platillo == null)
-            {
-                logger.LogError("No se encuentra el platillo con dichos datos.");
-                return NotFound("Algun valor ingresado no coincide con los datos almacenados.");
-            }
+            platillo.PlatilloAcompañamientos = platillo.PlatilloAcompañamientos.OrderBy(x => x.Orden).ToList();
 
             EscribirArchivo escribir = new EscribirArchivo(env);
             escribir.PetGet();
 
-            return platillo;
+            return mapper.Map<PlatilloDTOConAcompañamiento>(platillo);
 
         }
+
 
         [HttpGet("{nombre}")]
-        public async Task<ActionResult<Platillos>> Get([FromRoute] string nombre)
+        public async Task<ActionResult<List<GETPlatilloDTO>>> Get([FromRoute] string nombre)
         {
-            var platillo = await dbContext.Platillos.FirstOrDefaultAsync(x => x.Nombre.Contains(nombre));
+            var platillo = await dbContext.Platillos.Where(platilloBD => platilloBD.Nombre.Contains(nombre)).ToListAsync();
 
             if (platillo == null)
             {
@@ -94,47 +75,53 @@ namespace WebApiRestaurante.Controllers
             EscribirArchivo escribir = new EscribirArchivo(env);
             escribir.PetGet();
 
-            return platillo;
+            return mapper.Map<List<GETPlatilloDTO>>(platillo);
 
         }
 
         [HttpPost]
         [ServiceFilter(typeof(FiltroDeRegistro))]
-        public async Task<ActionResult> Post([FromBody] Platillos platillo)
+        public async Task<ActionResult> Post(PlatilloDTO platilloDTO)
         {
-            var existePLatillo = await dbContext.Platillos.AnyAsync(x => x.Nombre == platillo.Nombre);
+            var existePLatillo = await dbContext.Platillos.AnyAsync(x => x.Nombre == platilloDTO.Nombre);
 
             if (existePLatillo)
             {
                 return BadRequest("Ya existe un registro con el mismo nombre");
             }
 
+            var platillo = mapper.Map<Platillos>(platilloDTO);
+
             dbContext.Add(platillo);
             await dbContext.SaveChangesAsync();
+
+            var getplatilloDTO = mapper.Map<GETPlatilloDTO>(platillo);
+
             EscribirArchivo escribir = new EscribirArchivo(env);
             escribir.PetPost();
-            return Ok();
+            return NoContent();
         }
 
         [ServiceFilter(typeof(FiltroDeRegistro))]
         [HttpPut ("{id:int}")]
-        public async Task<ActionResult> Put(Platillos platillo, int id)
+        public async Task<ActionResult> Put(PlatilloDTO platilloCreacionDTO, int id)
         {
-            if(platillo.Id != id)
+            var exist = await dbContext.Platillos.AnyAsync(x => x.Id == id);
+            if(!exist)
             {
                 return BadRequest("El id del platillo no coincide con el establecido en la url.");
             }
+            var platilloDB = await dbContext.Platillos
+                .Include(x => x.PlatilloAcompañamientos)
+                .FirstOrDefaultAsync(x => x.Id == id);
 
-            if (platillo.Precio < 100 || platillo.Precio > 300)
-            {
-                return BadRequest("El valor ingresado no entra en el rango de $100 a $300.");
-            }
+            platilloDB = mapper.Map(platilloCreacionDTO, platilloDB);
+            OrdenarPorAcompañamientos(platilloDB);
 
-            dbContext.Update(platillo);
             await dbContext.SaveChangesAsync();
             EscribirArchivo escribir = new EscribirArchivo(env);
             escribir.PetPut();
-            return Ok();
+            return NoContent();
         }
 
         [HttpDelete("{id:int}")]
@@ -154,6 +141,17 @@ namespace WebApiRestaurante.Controllers
             EscribirArchivo escribir = new EscribirArchivo(env);
             escribir.PetDelete();
             return Ok();
+        }
+
+        private void OrdenarPorAcompañamientos(Platillos platillo)
+        {
+            if (platillo.PlatilloAcompañamientos != null)
+            {
+                for (int i = 0; i < platillo.PlatilloAcompañamientos.Count; i++)
+                {
+                    platillo.PlatilloAcompañamientos[i].Orden = i;
+                }
+            }
         }
     }
 }

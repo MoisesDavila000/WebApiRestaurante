@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using WebApiRestaurante.Entidades;
+using WebApiRestaurante2.Entidades;
 
-namespace WebApiRestaurante.Validaciones
+namespace WebApiRestaurante2.Validaciones
 {
     public class ValorDentroDeRangoAttribute : ValidationAttribute
     {

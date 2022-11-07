@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using WebApiRestaurante.Validaciones;
+using WebApiRestaurante2.Validaciones;
 
-namespace WebApiRestaurante.Entidades
+namespace WebApiRestaurante2.Entidades
 {
     public class Platillos
     {
@@ -27,15 +26,7 @@ namespace WebApiRestaurante.Entidades
         [PrimeraLetraMayuscula]
         public string Descricpion { get; set; }
 
-        [NotMapped]
-        public int Kcalorias { get; set; }
 
-        [Url]
-        [NotMapped]
-        public string Imagen { get; set; }
-
-
-
-        public List<Acompañamiento> Acompañamientos { get; set; }
+        public List<PlatilloAcompañamiento> PlatilloAcompañamientos { get; set; }
     }
 }

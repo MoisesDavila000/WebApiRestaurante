@@ -1,27 +1,27 @@
 {
   "Version": 1,
-  "Hash": "BGb3i6XyFqM0QHnAGU3KbFanRmSrpc4YLZ4fQsCW5Qs=",
-  "Source": "WebApiRestaurante",
-  "BasePath": "_content/WebApiRestaurante",
+  "Hash": "h1PV592X5lGsP02DEzgBJJvyjvKSJkmgN5CVOWU+Tn8=",
+  "Source": "WebApiRestaurante2",
+  "BasePath": "_content/WebApiRestaurante2",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "WebApiRestaurante\\wwwroot",
-      "Source": "WebApiRestaurante",
-      "ContentRoot": "D:\\VS repos\\WebApiRestaurante\\wwwroot\\",
-      "BasePath": "_content/WebApiRestaurante",
+      "Name": "WebApiRestaurante2\\wwwroot",
+      "Source": "WebApiRestaurante2",
+      "ContentRoot": "D:\\VS repos\\WebApiRestaurante2\\wwwroot\\",
+      "BasePath": "_content/WebApiRestaurante2",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\VS repos\\WebApiRestaurante\\wwwroot\\Restaurante.txt",
-      "SourceId": "WebApiRestaurante",
+      "Identity": "D:\\VS repos\\WebApiRestaurante2\\wwwroot\\Restaurante.txt",
+      "SourceId": "WebApiRestaurante2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\VS repos\\WebApiRestaurante\\wwwroot\\",
-      "BasePath": "_content/WebApiRestaurante",
+      "ContentRoot": "D:\\VS repos\\WebApiRestaurante2\\wwwroot\\",
+      "BasePath": "_content/WebApiRestaurante2",
       "RelativePath": "Restaurante.txt",
       "AssetKind": "All",
       "AssetMode": "All",
