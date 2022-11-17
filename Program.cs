@@ -1,9 +1,10 @@
 using WebApiRestaurante2;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 var startup = new Startup(builder.Configuration);
-startup.ConfigureServices(builder.Services);
+startup.ConfigureServices(builder.Services, builder.Configuration, builder.Environment);
 
 var app = builder.Build();
 

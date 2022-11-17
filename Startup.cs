@@ -15,7 +15,7 @@ namespace WebApiRestaurante2
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment env)
         {
             services.AddControllers(opciones =>
             {
@@ -29,11 +29,12 @@ namespace WebApiRestaurante2
             services.AddHostedService<EscribirArchivo>();
             services.AddAutoMapper(typeof(Startup));
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen(
-                /*c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApiRestaurante", Version = "v1" });
-            }*/);
+            services.AddSwaggerGen();
+            var ValorCli = configuration.GetValue<string>("cli");
+            var ValorVarEnt = configuration.GetValue<string>("ASPNETCORE_ENVIRONMENT");
+
+            EscribirArchivo escribir = new EscribirArchivo(env);
+            escribir.Priv(ValorCli, ValorVarEnt);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

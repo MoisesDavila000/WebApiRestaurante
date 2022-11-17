@@ -54,6 +54,12 @@
             Escribir("Proceso en ejecucion: " + DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss"));
         }
 
+        public void Priv(string ValorCli, string ValorVarEnt)
+        {
+            Escribir("Valor obtenido por linea de comandos: " + ValorCli);
+            Escribir("Variable de Entorno: " + ValorVarEnt);
+        }
+
         private void Escribir(string msg)
         {
             var ruta = $@"{env.ContentRootPath}\wwwroot\{nombreArchivo}";
