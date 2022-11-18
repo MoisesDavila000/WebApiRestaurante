@@ -391,3 +391,149 @@ Proceso en ejecucion: 16/11/2022 11:13:15
 Proceso en ejecucion: 16/11/2022 11:13:45
 Proceso en ejecucion: 16/11/2022 11:14:15
 Se cerro la aplicacion.
+Valor obtenido por linea de comandos: 
+Variable de Entorno: TEST
+Valor obtenido por linea de comandos: 
+Variable de Entorno: TEST
+Valor obtenido por linea de comandos: 
+Variable de Entorno: TEST
+Valor obtenido por linea de comandos: 
+Variable de Entorno: TEST
+Valor obtenido por linea de comandos: 
+Variable de Entorno: TEST
+Valor obtenido por linea de comandos: 
+Variable de Entorno: TEST
+Valor obtenido por linea de comandos: 
+Variable de Entorno: TEST
+Valor obtenido por linea de comandos: 
+Variable de Entorno: TEST
+Valor obtenido por linea de comandos: 
+Variable de Entorno: TEST
+Valor obtenido por linea de comandos: 
+Variable de Entorno: TEST
+Valor obtenido por linea de comandos: 
+Variable de Entorno: TEST
+Valor obtenido por linea de comandos: 
+Variable de Entorno: Development
+Se inicio la aplicacion.
+Proceso en ejecucion: 18/11/2022 06:07:51
+Proceso en ejecucion: 18/11/2022 06:08:21
+Proceso en ejecucion: 18/11/2022 06:08:51
+Proceso en ejecucion: 18/11/2022 06:09:21
+Proceso en ejecucion: 18/11/2022 06:09:51
+Proceso en ejecucion: 18/11/2022 06:10:21
+Proceso en ejecucion: 18/11/2022 06:10:51
+Proceso en ejecucion: 18/11/2022 06:11:21
+Proceso en ejecucion: 18/11/2022 06:11:51
+Proceso en ejecucion: 18/11/2022 06:12:21
+Proceso en ejecucion: 18/11/2022 06:12:51
+Proceso en ejecucion: 18/11/2022 06:13:21
+Proceso en ejecucion: 18/11/2022 06:13:51
+Proceso en ejecucion: 18/11/2022 06:14:21
+Proceso en ejecucion: 18/11/2022 06:14:51
+Proceso en ejecucion: 18/11/2022 06:15:21
+Proceso en ejecucion: 18/11/2022 06:15:51
+Proceso en ejecucion: 18/11/2022 06:16:21
+Proceso en ejecucion: 18/11/2022 06:16:51
+Se realizo una peticion GET. 18/11/2022 06:16:51
+Valor obtenido por linea de comandos: 
+Variable de Entorno: Development
+Se inicio la aplicacion.
+Proceso en ejecucion: 18/11/2022 06:24:58
+Valor obtenido por linea de comandos: 
+Variable de Entorno: Development
+Se inicio la aplicacion.
+Proceso en ejecucion: 18/11/2022 06:27:08
+Se realizo una peticion GET. 18/11/2022 06:27:19
+Valor obtenido por linea de comandos: 
+Variable de Entorno: Development
+Se inicio la aplicacion.
+Proceso en ejecucion: 18/11/2022 06:28:03
+Proceso en ejecucion: 18/11/2022 06:28:33
+Proceso en ejecucion: 18/11/2022 06:29:03
+Proceso en ejecucion: 18/11/2022 06:29:33
+Proceso en ejecucion: 18/11/2022 06:30:03
+Proceso en ejecucion: 18/11/2022 06:30:33
+Proceso en ejecucion: 18/11/2022 06:31:03
+Valor obtenido por linea de comandos: 
+Variable de Entorno: Development
+Se inicio la aplicacion.
+Proceso en ejecucion: 18/11/2022 06:37:56
+Proceso en ejecucion: 18/11/2022 06:38:26
+Proceso en ejecucion: 18/11/2022 06:38:56
+Proceso en ejecucion: 18/11/2022 06:39:26
+Proceso en ejecucion: 18/11/2022 06:39:56
+Proceso en ejecucion: 18/11/2022 06:40:26
+Proceso en ejecucion: 18/11/2022 06:40:56
+Proceso en ejecucion: 18/11/2022 06:41:26
+Proceso en ejecucion: 18/11/2022 06:41:56
+Proceso en ejecucion: 18/11/2022 06:42:26
+Proceso en ejecucion: 18/11/2022 06:42:56
+Proceso en ejecucion: 18/11/2022 06:43:26
+Proceso en ejecucion: 18/11/2022 06:43:56
+Proceso en ejecucion: 18/11/2022 06:44:26
+Proceso en ejecucion: 18/11/2022 06:44:56
+Proceso en ejecucion: 18/11/2022 06:45:26
+Se realizo una peticion GET. 18/11/2022 06:45:44
+Proceso en ejecucion: 18/11/2022 06:45:56
+Proceso en ejecucion: 18/11/2022 06:46:26
+Proceso en ejecucion: 18/11/2022 06:46:56
+Valor obtenido por linea de comandos: 
+Variable de Entorno: Development
+Se inicio la aplicacion.
+Proceso en ejecucion: 18/11/2022 06:47:32
+Se realizo una peticion GET. 18/11/2022 06:47:45
+Se realizo una peticion GET. 18/11/2022 06:47:57
+Proceso en ejecucion: 18/11/2022 06:48:02
+Valor obtenido por linea de comandos: 
+Variable de Entorno: Development
+Se inicio la aplicacion.
+Proceso en ejecucion: 18/11/2022 07:00:24
+Proceso en ejecucion: 18/11/2022 07:00:54
+Proceso en ejecucion: 18/11/2022 07:01:24
+Se realizo una peticion GET. 18/11/2022 07:01:37
+Se realizo una peticion GET. 18/11/2022 07:01:52
+Proceso en ejecucion: 18/11/2022 07:01:54
+Proceso en ejecucion: 18/11/2022 07:02:24
+Proceso en ejecucion: 18/11/2022 07:02:54
+Proceso en ejecucion: 18/11/2022 07:03:24
+Proceso en ejecucion: 18/11/2022 07:03:54
+Proceso en ejecucion: 18/11/2022 07:04:24
+Valor obtenido por linea de comandos: 
+Variable de Entorno: Development
+Se inicio la aplicacion.
+Proceso en ejecucion: 18/11/2022 07:05:35
+Proceso en ejecucion: 18/11/2022 07:06:05
+Se realizo una peticion GET. 18/11/2022 07:06:31
+Proceso en ejecucion: 18/11/2022 07:06:35
+Proceso en ejecucion: 18/11/2022 07:07:05
+Proceso en ejecucion: 18/11/2022 07:07:35
+Proceso en ejecucion: 18/11/2022 07:08:05
+Proceso en ejecucion: 18/11/2022 07:08:35
+Proceso en ejecucion: 18/11/2022 07:09:05
+Proceso en ejecucion: 18/11/2022 07:09:35
+Proceso en ejecucion: 18/11/2022 07:10:19
+Proceso en ejecucion: 18/11/2022 07:10:35
+Proceso en ejecucion: 18/11/2022 07:11:05
+Proceso en ejecucion: 18/11/2022 07:11:35
+Proceso en ejecucion: 18/11/2022 07:12:05
+Proceso en ejecucion: 18/11/2022 07:12:35
+Valor obtenido por linea de comandos: 
+Variable de Entorno: Development
+Se inicio la aplicacion.
+Proceso en ejecucion: 18/11/2022 07:12:48
+Proceso en ejecucion: 18/11/2022 07:13:18
+Proceso en ejecucion: 18/11/2022 07:13:48
+Valor obtenido por linea de comandos: 
+Variable de Entorno: Development
+Se inicio la aplicacion.
+Proceso en ejecucion: 18/11/2022 07:16:31
+Proceso en ejecucion: 18/11/2022 07:17:01
+Proceso en ejecucion: 18/11/2022 07:17:31
+Valor obtenido por linea de comandos: 
+Variable de Entorno: Development
+Se inicio la aplicacion.
+Proceso en ejecucion: 18/11/2022 07:19:03
+Proceso en ejecucion: 18/11/2022 07:19:33
+Proceso en ejecucion: 18/11/2022 07:20:03
+Proceso en ejecucion: 18/11/2022 07:20:33

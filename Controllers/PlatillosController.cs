@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApiRestaurante2.DTOs;
@@ -10,6 +12,7 @@ namespace WebApiRestaurante2.Controllers
 {
     [ApiController]
     [Route("Platillos")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
     public class PlatillosController: ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
@@ -28,6 +31,7 @@ namespace WebApiRestaurante2.Controllers
         }
 
         [HttpGet("/Menu_Platillos")]
+        [AllowAnonymous]
         public async Task<ActionResult<List<GETPlatilloDTO>>> Get()
         {
             EscribirArchivo escribir = new EscribirArchivo(env);
