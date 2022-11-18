@@ -5,11 +5,14 @@ using WebApiRestaurante2.Entidades;
 using WebApiRestaurante2.Filtros;
 using WebApiRestaurante2.Services;
 using WebApiRestaurante2.DTOs;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApiRestaurante2.Controllers
 {
     [ApiController]
     [Route("Empleados")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
     public class EmpleadoController: ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
@@ -71,15 +74,6 @@ namespace WebApiRestaurante2.Controllers
             {
                 NotFound();
             }
-            //var existeMatricula = await dbContext.Empleados.AnyAsync(x => x.Matricula == empleados.Matricula);
-
-            //if (existeMatricula)
-            //{
-            //    logger.LogError("Ya existe un empleado con dicha matricula.");
-            //    return BadRequest("Ya existe un registro con la misma matricula");
-            //}
-
-            //var existeTurno = await dbContext.Turnos.AnyAsync(x => x.Id == empleados.TurnosId);
 
             var empleado = mapper.Map<Empleados>(empleadoDTO);
             empleado.TurnosId = turnoId;

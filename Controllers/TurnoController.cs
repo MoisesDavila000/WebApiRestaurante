@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApiRestaurante2.DTOs;
@@ -10,6 +12,7 @@ namespace WebApiRestaurante2.Controllers
 {
     [ApiController]
     [Route("Turnos")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
     public class TurnoController: ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
@@ -24,20 +27,6 @@ namespace WebApiRestaurante2.Controllers
             this.env = env;
             this.mapper = mapper;
         }
-
-        /*[HttpGet("Listado")]
-        public async Task<ActionResult<List<GETTurnoDTO>>> GetAll()
-        {
-            var turno = await dbContext.Turnos
-                .Include(empleadosDB => empleadosDB.Empleados)
-                .FirstOrDefaultAsync(x => x.Id == id);
-
-            EscribirArchivo escribir = new EscribirArchivo(env);
-            escribir.PetGet();
-            logger.LogInformation("Se obtiene el listado de los turnos.");
-            return await dbContext.Turnos.Include(x => x.Empleados).ToListAsync();
-        }
-        */
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<GETTurnoDTO>> Get([FromHeader] int id)

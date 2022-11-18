@@ -12,6 +12,7 @@ namespace WebApiRestaurante2.Controllers
 {
     [ApiController]
     [Route("cuentas")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
     public class CuentasController : ControllerBase
     {
         private readonly UserManager<IdentityUser> userManager;
@@ -44,6 +45,7 @@ namespace WebApiRestaurante2.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<ActionResult<RespuestaAutenticacion>> Login(CredencialesUsuario credencialesUsuario)
         {
             var result = await signInManager.PasswordSignInAsync(credencialesUsuario.Email,

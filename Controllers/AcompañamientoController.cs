@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApiRestaurante2.DTOs;
@@ -10,6 +12,7 @@ namespace WebApiRestaurante2.Controllers
 {
     [ApiController]
     [Route("Acompañamientos")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
     public class AcompañamientoController: ControllerBase
     {
         private readonly ApplicationDbContext dbContext;
@@ -26,6 +29,7 @@ namespace WebApiRestaurante2.Controllers
         }
 
         [HttpGet("/Menu_Acompañamientos")]
+        [AllowAnonymous]
         public async Task<ActionResult<List<GETAcompañamientoDTO>>> GetAll()
         {
             EscribirArchivo escribir = new EscribirArchivo(env);
